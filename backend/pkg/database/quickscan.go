@@ -63,7 +63,7 @@ func DBQuickScanConfigFromAPI(runtimeQuickScanConfig *models.RuntimeQuickScanCon
 func RuntimeQuickScanConfigFromDB(config *QuickScanConfig) *models.RuntimeQuickScanConfig {
 	return &models.RuntimeQuickScanConfig{
 		CisDockerBenchmarkScanEnabled: config.CISDockerBenchmarkEnabled,
-		MaxScanParallelism:            &config.MaxScanParallelism,
+		MaxScanParallelism:            config.MaxScanParallelism,
 	}
 }
 
@@ -102,6 +102,6 @@ func (q *QuickScanConfigTableHandler) SetDefault() error {
 func createDefaultRuntimeQuickScanConfig() *models.RuntimeQuickScanConfig {
 	return &models.RuntimeQuickScanConfig{
 		CisDockerBenchmarkScanEnabled: false,
-		MaxScanParallelism:            0,
+		MaxScanParallelism:            10,
 	}
 }
