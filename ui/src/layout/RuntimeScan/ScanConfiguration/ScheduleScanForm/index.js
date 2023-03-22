@@ -53,7 +53,7 @@ const ScheduleScanForm = ({namespaces, onClose}) => {
     const initialValues = {
         [GENERAL_FOMR_FIELDS.NAMESPACES]: [],
         [GENERAL_FOMR_FIELDS.CIS_ENABLED]: false,
-        [GENERAL_FOMR_FIELDS.MAX_SCANPARALLELISM]: 0,
+        [GENERAL_FOMR_FIELDS.MAX_SCANPARALLELISM]: 10,
         [SCHEDULE_TYPE_DATA_WRAPPER]: {
             [GENERAL_FOMR_FIELDS.SCHEDULE_TYPE]: SCHEDULE_TYPES.LATER.value
         },

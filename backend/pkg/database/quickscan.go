@@ -102,6 +102,6 @@ func (q *QuickScanConfigTableHandler) SetDefault() error {
 func createDefaultRuntimeQuickScanConfig() *models.RuntimeQuickScanConfig {
 	return &models.RuntimeQuickScanConfig{
 		CisDockerBenchmarkScanEnabled: false,
-		MaxScanParallelism:            10,
+		MaxScanParallelism:            10, // nolint: gomnd
 	}
 }

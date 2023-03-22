@@ -48,7 +48,7 @@ const (
 func (s *Scanner) jobBatchManagement() {
 	s.Lock()
 	imageIDToScanData := s.imageIDToScanData
-	numberOfWorkers := s.getScanParallelism()
+	numberOfWorkers := s.scanConfig.MaxScanParallelism
 
 	imagesStartedToScan := &s.progress.ImagesStartedToScan
 	imagesCompletedToScan := &s.progress.ImagesCompletedToScan
@@ -408,14 +408,4 @@ func setJobScanUUID(job *batchv1.Job, scanUUID string) {
 		container := &job.Spec.Template.Spec.Containers[i]
 		container.Env = append(container.Env, corev1.EnvVar{Name: shared.ScanUUID, Value: scanUUID})
 	}
-}
-
-func (s *Scanner) getScanParallelism() int64 {
-	log.WithFields(s.logFields).Infof("max scan parallelism is %d, default parallelism is %d", s.scanConfig.MaxScanParallelism, s.defaultScanParallelism)
-
-	if s.scanConfig.MaxScanParallelism > 0 {
-		return s.scanConfig.MaxScanParallelism
-	}
-
-	return s.defaultScanParallelism
 }
