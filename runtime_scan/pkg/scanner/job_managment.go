@@ -49,6 +49,7 @@ func (s *Scanner) jobBatchManagement() {
 	s.Lock()
 	imageIDToScanData := s.imageIDToScanData
 	numberOfWorkers := s.getScanParallelism()
+	log.WithFields(s.logFields).Infof("scan parallelism is %d", numberOfWorkers)
 
 	imagesStartedToScan := &s.progress.ImagesStartedToScan
 	imagesCompletedToScan := &s.progress.ImagesCompletedToScan
@@ -410,6 +411,8 @@ func setJobScanUUID(job *batchv1.Job, scanUUID string) {
 }
 
 func (s *Scanner) getScanParallelism() int64 {
+	log.WithFields(s.logFields).Infof("max scan parallelism is %d, default parallelism is %d", s.scanConfig.MaxScanParallelism, s.defaultScanParallelism)
+
 	if s.scanConfig.MaxScanParallelism > 0 {
 		return s.scanConfig.MaxScanParallelism
 	}
