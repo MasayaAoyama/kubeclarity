@@ -39,7 +39,7 @@ type Scheduler struct {
 type Params struct {
 	Namespaces                    []string
 	CisDockerBenchmarkScanEnabled bool
-	MaxScanParallelism            int64
+	MaxScanParallelism            int
 	Interval                      time.Duration
 	StartTime                     time.Time
 	SingleScan                    bool
@@ -86,7 +86,7 @@ func (s *Scheduler) Init() {
 	s.Schedule(&Params{
 		Namespaces:                    scanConfig.Namespaces,
 		CisDockerBenchmarkScanEnabled: scanConfig.CisDockerBenchmarkScanEnabled,
-		MaxScanParallelism:            scanConfig.MaxScanParallelism,
+		MaxScanParallelism:            int(scanConfig.MaxScanParallelism),
 		Interval:                      time.Duration(sched.Interval),
 		StartTime:                     startTime,
 		SingleScan:                    scanConfig.ScanConfigType().ScheduleScanConfigType() == SingleScheduleScanConfig,

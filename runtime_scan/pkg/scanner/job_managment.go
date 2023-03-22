@@ -62,7 +62,7 @@ func (s *Scanner) jobBatchManagement() {
 	fullScanDone := make(chan bool)
 
 	// spawn workers
-	for i := int64(0); i < numberOfWorkers; i++ {
+	for i := 0; i < numberOfWorkers; i++ {
 		go s.worker(q, i, done, s.killSignal)
 	}
 
@@ -110,7 +110,7 @@ func (s *Scanner) jobBatchManagement() {
 }
 
 // worker waits for data on the queue, runs a scan job and waits for results from that scan job. Upon completion, done is notified to the caller.
-func (s *Scanner) worker(queue chan *scanData, workNumber int64, done, ks chan bool) {
+func (s *Scanner) worker(queue chan *scanData, workNumber int, done, ks chan bool) {
 	for {
 		select {
 		case data := <-queue:
@@ -409,7 +409,7 @@ func setJobScanUUID(job *batchv1.Job, scanUUID string) {
 	}
 }
 
-func (s *Scanner) getScanParallelism() int64 {
+func (s *Scanner) getScanParallelism() int {
 	if s.scanConfig.MaxScanParallelism > 0 {
 		return s.scanConfig.MaxScanParallelism
 	}

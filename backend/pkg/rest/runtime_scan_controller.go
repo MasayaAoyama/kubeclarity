@@ -262,7 +262,7 @@ func (s *Server) createScanConfigFromQuickScan(namespaces []string) (*runtimesca
 	return &runtimescanner.ScanConfig{
 		ScanType:                      models.ScanTypeQUICK,
 		CisDockerBenchmarkScanEnabled: quickScanConfig.CisDockerBenchmarkScanEnabled,
-		MaxScanParallelism:            quickScanConfig.MaxScanParallelism,
+		MaxScanParallelism:            int(quickScanConfig.MaxScanParallelism),
 		Namespaces:                    namespaces,
 	}, nil
 }
@@ -350,7 +350,7 @@ func (s *Server) handleNewScheduleScanConfig(config *models.RuntimeScheduleScanC
 	schedParams := &scheduler.Params{
 		Namespaces:                    config.Namespaces,
 		CisDockerBenchmarkScanEnabled: config.CisDockerBenchmarkScanEnabled,
-		MaxScanParallelism:            config.MaxScanParallelism,
+		MaxScanParallelism:            int(config.MaxScanParallelism),
 		Interval:                      interval,
 		StartTime:                     startTime,
 		SingleScan:                    singleScan,

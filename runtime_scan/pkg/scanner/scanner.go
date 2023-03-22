@@ -43,7 +43,7 @@ type Scanner struct {
 	progress               _types.ScanProgress
 	scannerJobTemplate     *batchv1.Job
 	scanConfig             *_config.ScanConfig
-	defaultScanParallelism int64
+	defaultScanParallelism int
 	killSignal             chan bool
 	clientset              kubernetes.Interface
 	logFields              log.Fields

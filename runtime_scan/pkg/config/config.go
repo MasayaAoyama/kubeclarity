@@ -37,7 +37,7 @@ type Config struct {
 	ScannerJobResultListenPort int
 	CredsSecretNamespace       string
 	ScannerJobTemplate         *batchv1.Job
-	DefaultScanParallelism     int64
+	DefaultScanParallelism     int
 }
 
 func setConfigDefaults() {
@@ -63,7 +63,7 @@ func LoadConfig(clientset kubernetes.Interface) (*Config, error) {
 		ScannerJobResultListenPort: viper.GetInt(ScannerJobResultListenPort),
 		CredsSecretNamespace:       viper.GetString(CredsSecretNamespace),
 		ScannerJobTemplate:         scannerJobTemplate,
-		DefaultScanParallelism:     viper.GetInt64(DefaultScanParallelism),
+		DefaultScanParallelism:     viper.GetInt(DefaultScanParallelism),
 	}
 
 	return config, nil
