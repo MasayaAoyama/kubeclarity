@@ -27,8 +27,8 @@ type RuntimeScheduleScanConfig struct {
 	CisDockerBenchmarkScanEnabled bool `json:"cisDockerBenchmarkScanEnabled,omitempty"`
 
 	// max scan parallelism
-	// Minimum: 0
-	MaxScanParallelism *int64 `json:"maxScanParallelism,omitempty"`
+	// Minimum: 1
+	MaxScanParallelism int64 `json:"maxScanParallelism,omitempty"`
 
 	// namespaces
 	Namespaces []string `json:"namespaces"`
@@ -51,7 +51,7 @@ func (m *RuntimeScheduleScanConfig) UnmarshalJSON(raw []byte) error {
 	var data struct {
 		CisDockerBenchmarkScanEnabled bool `json:"cisDockerBenchmarkScanEnabled,omitempty"`
 
-		MaxScanParallelism *int64 `json:"maxScanParallelism,omitempty"`
+		MaxScanParallelism int64 `json:"maxScanParallelism,omitempty"`
 
 		Namespaces []string `json:"namespaces"`
 
@@ -100,7 +100,7 @@ func (m RuntimeScheduleScanConfig) MarshalJSON() ([]byte, error) {
 	b1, err = json.Marshal(struct {
 		CisDockerBenchmarkScanEnabled bool `json:"cisDockerBenchmarkScanEnabled,omitempty"`
 
-		MaxScanParallelism *int64 `json:"maxScanParallelism,omitempty"`
+		MaxScanParallelism int64 `json:"maxScanParallelism,omitempty"`
 
 		Namespaces []string `json:"namespaces"`
 	}{
@@ -150,7 +150,7 @@ func (m *RuntimeScheduleScanConfig) validateMaxScanParallelism(formats strfmt.Re
 		return nil
 	}
 
-	if err := validate.MinimumInt("maxScanParallelism", "body", *m.MaxScanParallelism, 0, false); err != nil {
+	if err := validate.MinimumInt("maxScanParallelism", "body", m.MaxScanParallelism, 1, false); err != nil {
 		return err
 	}
 

@@ -698,10 +698,10 @@ definitions:
       cisDockerBenchmarkScanEnabled:
         type: 'boolean'
       maxScanParallelism:
-        type: 'number'
-        format: 'integer'
-        minimum: 0
-        default: 0
+        type: 'integer'
+        format: 'int'
+        minimum: 1
+        default: 1
 
   RuntimeScheduleScanConfig:
     description: 'Scheduled runtime scan configuration'
@@ -714,10 +714,10 @@ definitions:
       cisDockerBenchmarkScanEnabled:
         type: 'boolean'
       maxScanParallelism:
-        type: 'number'
-        format: 'integer'
-        minimum: 0
-        default: 0
+        type: 'integer'
+        format: 'int'
+        minimum: 1
+        default: 1
       scanConfigType:
         $ref: '#/definitions/RuntimeScheduleScanConfigType'
 

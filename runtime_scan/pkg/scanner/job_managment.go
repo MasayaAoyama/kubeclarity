@@ -49,7 +49,6 @@ func (s *Scanner) jobBatchManagement() {
 	s.Lock()
 	imageIDToScanData := s.imageIDToScanData
 	numberOfWorkers := s.getScanParallelism()
-	log.WithFields(s.logFields).Infof("scan parallelism is %d", numberOfWorkers)
 
 	imagesStartedToScan := &s.progress.ImagesStartedToScan
 	imagesCompletedToScan := &s.progress.ImagesCompletedToScan
@@ -63,6 +62,7 @@ func (s *Scanner) jobBatchManagement() {
 	fullScanDone := make(chan bool)
 
 	// spawn workers
+	log.WithFields(s.logFields).Infof("running %d scan workers", numberOfWorkers)
 	for i := int64(0); i < numberOfWorkers; i++ {
 		go s.worker(q, i, done, s.killSignal)
 	}

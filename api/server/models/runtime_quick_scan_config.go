@@ -23,8 +23,8 @@ type RuntimeQuickScanConfig struct {
 	CisDockerBenchmarkScanEnabled bool `json:"cisDockerBenchmarkScanEnabled,omitempty"`
 
 	// max scan parallelism
-	// Minimum: 0
-	MaxScanParallelism *int64 `json:"maxScanParallelism,omitempty"`
+	// Minimum: 1
+	MaxScanParallelism int64 `json:"maxScanParallelism,omitempty"`
 }
 
 // Validate validates this runtime quick scan config
@@ -46,7 +46,7 @@ func (m *RuntimeQuickScanConfig) validateMaxScanParallelism(formats strfmt.Regis
 		return nil
 	}
 
-	if err := validate.MinimumInt("maxScanParallelism", "body", *m.MaxScanParallelism, 0, false); err != nil {
+	if err := validate.MinimumInt("maxScanParallelism", "body", m.MaxScanParallelism, 1, false); err != nil {
 		return err
 	}
 
