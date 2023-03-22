@@ -2051,6 +2051,12 @@ func init() {
       "properties": {
         "cisDockerBenchmarkScanEnabled": {
           "type": "boolean"
+        },
+        "maxScanParallelism": {
+          "type": "number",
+          "format": "integer",
+          "default": 10,
+          "minimum": 1
         }
       }
     },
@@ -2148,6 +2154,12 @@ func init() {
       "properties": {
         "cisDockerBenchmarkScanEnabled": {
           "type": "boolean"
+        },
+        "maxScanParallelism": {
+          "type": "number",
+          "format": "integer",
+          "default": 10,
+          "minimum": 1
         },
         "namespaces": {
           "type": "array",
@@ -6086,6 +6098,12 @@ func init() {
       "properties": {
         "cisDockerBenchmarkScanEnabled": {
           "type": "boolean"
+        },
+        "maxScanParallelism": {
+          "type": "number",
+          "format": "integer",
+          "default": 10,
+          "minimum": 1
         }
       }
     },
@@ -6183,6 +6201,12 @@ func init() {
       "properties": {
         "cisDockerBenchmarkScanEnabled": {
           "type": "boolean"
+        },
+        "maxScanParallelism": {
+          "type": "number",
+          "format": "integer",
+          "default": 10,
+          "minimum": 1
         },
         "namespaces": {
           "type": "array",
