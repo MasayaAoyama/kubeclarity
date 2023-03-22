@@ -64,7 +64,7 @@ type ScanConfig struct {
 	ScanType                      models.ScanType
 	CisDockerBenchmarkScanEnabled bool
 	Namespaces                    []string
-	MaxScanParallelism            int
+	MaxScanParallelism            int64
 }
 
 func CreateRuntimeScanner(scanner orchestrator.VulnerabilitiesScanner, scanChan chan *ScanConfig, resultsChan chan *types.ScanResults) Scanner {
