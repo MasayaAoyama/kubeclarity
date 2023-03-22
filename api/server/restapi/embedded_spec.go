@@ -2055,8 +2055,7 @@ func init() {
         "maxScanParallelism": {
           "type": "number",
           "format": "integer",
-          "default": 10,
-          "minimum": 1
+          "default": 0
         }
       }
     },
@@ -2158,8 +2157,7 @@ func init() {
         "maxScanParallelism": {
           "type": "number",
           "format": "integer",
-          "default": 10,
-          "minimum": 1
+          "default": 0
         },
         "namespaces": {
           "type": "array",
@@ -6102,8 +6100,8 @@ func init() {
         "maxScanParallelism": {
           "type": "number",
           "format": "integer",
-          "default": 10,
-          "minimum": 1
+          "default": 0,
+          "minimum": 0
         }
       }
     },
@@ -6205,8 +6203,8 @@ func init() {
         "maxScanParallelism": {
           "type": "number",
           "format": "integer",
-          "default": 10,
-          "minimum": 1
+          "default": 0,
+          "minimum": 0
         },
         "namespaces": {
           "type": "array",
