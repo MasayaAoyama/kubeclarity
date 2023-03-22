@@ -11,7 +11,7 @@ const ScanOptionsForm = ({onClose}) => {
     
     const initialValues = {
         cisDockerBenchmarkScanEnabled: data?.cisDockerBenchmarkScanEnabled || false,
-        maxScanParallelism: data?.maxScanParallelism || 10
+        maxScanParallelism: data?.maxScanParallelism || 0
     };
     
     return (
